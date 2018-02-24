@@ -1,0 +1,24 @@
+{
+  "name": "create-proton-app",
+  "version": "1.0.0",
+  "description": "Create Native Proton apps",
+  "keywords": [
+    "react",
+    "proton",
+    "native"
+  ],
+  "bin": {"create-proton-app": "./index.js"},
+  "files": [
+	  "index.js",
+	  "createApp.js",
+	  "template"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alberto Rosado",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.14.1"
+  }
+}
