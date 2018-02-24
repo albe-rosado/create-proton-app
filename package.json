@@ -1,6 +1,6 @@
 {
   "name": "create-proton-app",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Create Proton Native apps",
   "keywords": [
     "react",
@@ -12,8 +12,8 @@
   },
   "files": [
     "index.js",
-	"createApp.js",
-	"utils.js",
+    "createApp.js",
+    "utils.js",
     "template"
   ],
   "scripts": {
