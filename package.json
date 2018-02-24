@@ -1,7 +1,7 @@
 {
   "name": "create-proton-app",
   "version": "1.0.1",
-  "description": "Create Native Proton apps",
+  "description": "Create Proton Native apps",
   "keywords": [
     "react",
     "proton",
@@ -12,13 +12,15 @@
   },
   "files": [
     "index.js",
-    "createApp.js",
+	"createApp.js",
+	"utils.js",
     "template"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alberto Rosado",
+  "homepage": "https://github.com/albe-rosado/create-proton-app",
   "license": "MIT",
   "dependencies": {
     "commander": "^2.14.1",
