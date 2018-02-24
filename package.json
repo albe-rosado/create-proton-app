@@ -7,11 +7,13 @@
     "proton",
     "native"
   ],
-  "bin": {"create-proton-app": "./index.js"},
+  "bin": {
+    "create-proton-app": "./index.js"
+  },
   "files": [
-	  "index.js",
-	  "createApp.js",
-	  "template"
+    "index.js",
+    "createApp.js",
+    "template"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,6 +21,7 @@
   "author": "Alberto Rosado",
   "license": "MIT",
   "dependencies": {
-    "commander": "^2.14.1"
+    "commander": "^2.14.1",
+    "global-dirs": "^0.1.1"
   }
 }
