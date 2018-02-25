@@ -12,8 +12,7 @@
   },
   "files": [
     "index.js",
-    "createApp.js",
-    "utils.js",
+    "src",
     "template"
   ],
   "scripts": {
@@ -22,6 +21,10 @@
   "author": "Alberto Rosado",
   "homepage": "https://github.com/albe-rosado/create-proton-app",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/albe-rosado/create-proton-app"
+  },
   "dependencies": {
     "commander": "^2.14.1",
     "global-dirs": "^0.1.1"
