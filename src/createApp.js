@@ -5,7 +5,7 @@ const os = require('os');
 const spawn = require('child_process').spawn;
 const global = require('global-dirs');
 
-const pkgJson = require('./package.json');
+const pkgJson = require('../package.json');
 const {isOnline, ansiColors} = require('./utils');
 
 let projectDir;
@@ -26,11 +26,6 @@ const app = new commander.Command(pkgJson.name)
   .option('--verbose', 'Print additional logs')
   .parse(process.argv);
 
-
-if (typeof projectDir === 'undefined') {
-  printErrorMessage('No directory especified ...');
-  process.exit(1);
-}
 
 const createApp = function(projectDir) {
   const rootPath = path.resolve(projectDir);
@@ -59,9 +54,8 @@ const createApp = function(projectDir) {
   }	
   
   process.chdir(rootPath);
-
   // copy template files
-  const templatePath = path.join(global.npm.prefix, 'lib', 'node_modules', pkgJson.name,'template');
+  const templatePath = path.join(global.npm.packages, pkgJson.name,'template');
 
   fs.copyFileSync(path.join(templatePath, 'index.js'), path.join(process.cwd(), 'index.js'));
   fs.copyFileSync(path.join(templatePath, '.babelrc'), path.join(process.cwd(), '.babelrc'));
@@ -143,5 +137,9 @@ const printErrorMessage = (errorMessage) => {
   console.log(ansiColors.reset);
 };
 
+if (typeof projectDir === 'undefined') {
+  printErrorMessage('No directory especified ...');
+  process.exit(1);
+}
 
 createApp(projectDir);
