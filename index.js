@@ -1,4 +1,4 @@
-#! /usr/bin/node
+#!/usr/bin/env node
 const {isOldNode} = require('./src/utils');
 
 if (isOldNode()) {
