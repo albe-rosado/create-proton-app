@@ -2,11 +2,12 @@ const commander = require('commander');
 const path = require('path');
 const fs = require('fs');
 const os = require('os');
-const spawn = require('child_process').spawn;
+const { exec } = require('child_process');
 const global = require('global-dirs');
 
 const pkgJson = require('../package.json');
 const {isOnline, ansiColors} = require('./utils');
+
 
 let projectDir;
 
@@ -55,7 +56,7 @@ const createApp = function(projectDir) {
   
   process.chdir(rootPath);
   // copy template files
-  const templatePath = path.join(global.npm.packages, pkgJson.name,'template');
+  const templatePath = path.join(__dirname, '..', 'template');
 
   fs.copyFileSync(path.join(templatePath, 'index.js'), path.join(process.cwd(), 'index.js'));
   fs.copyFileSync(path.join(templatePath, '.babelrc'), path.join(process.cwd(), '.babelrc'));
@@ -87,14 +88,14 @@ const installDeps = (verbose) => {
   // dependencies to install
   const dependencies = ['proton-native'];
   // Install dependecies
-  const command = 'npm';// Supporting only npm initially, yarn will come in the future(maybe)	
-  const args = ['install', '--save', '--loglevel', 'error'].concat(dependencies);
+  const command = `npm`; // Supporting only npm initially, yarn will come in the future(maybe)	
+  const args = ['install', '--save', '--loglevel', 'error', ...dependencies];
   if (verbose) {
     args.push('--verbose');
   }
 
   return new Promise((resolve, reject) => {
-    const childProc = spawn(command, args, {stdio: 'inherit'});
+    const childProc = exec(`${command} ${args.join(' ')}`);
     childProc.on('close', (code) => {
       if (code !== 0) {
         reject({
