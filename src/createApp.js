@@ -7,7 +7,7 @@ const global = require('global-dirs');
 
 const pkgJson = require('../package.json');
 const {isOnline, ansiColors} = require('./utils');
-
+const runningOnWindows = os.platform() === 'win32';
 
 let projectDir;
 
@@ -88,7 +88,7 @@ const installDeps = (verbose) => {
   // dependencies to install
   const dependencies = ['proton-native'];
   // Install dependecies
-  const command = `npm`; // Supporting only npm initially, yarn will come in the future(maybe)	
+  const command = `npm${runningOnWindows ? '.cmd' : ''}`; // Supporting only npm initially, yarn will come in the future(maybe)	
   const args = ['install', '--save', '--loglevel', 'error', ...dependencies];
   if (verbose) {
     args.push('--verbose');
