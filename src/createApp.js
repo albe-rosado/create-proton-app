@@ -3,7 +3,6 @@ const path = require('path');
 const fs = require('fs');
 const os = require('os');
 const { exec } = require('child_process');
-const global = require('global-dirs');
 
 const pkgJson = require('../package.json');
 const {isOnline, ansiColors} = require('./utils');
