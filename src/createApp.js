@@ -41,7 +41,7 @@ const createApp = function(projectDir) {
     private: true,
     scripts: {
       "start": "node_modules/.bin/babel-node index.js",
-        "build": "node_modules/.bin/babel index.js -d bin/index.js"
+      "build": "node_modules/.bin/babel index.js -d bin/"
     }
   };
 
