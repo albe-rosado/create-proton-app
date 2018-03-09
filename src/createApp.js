@@ -60,7 +60,7 @@ const createApp = function(projectDir) {
   fs.copyFileSync(path.join(templatePath, 'index.js'), path.join(process.cwd(), 'index.js'));
   fs.copyFileSync(path.join(templatePath, '.babelrc'), path.join(process.cwd(), '.babelrc'));
 
-  console.log('Installing packages... Make take a few minutes.');
+  console.log('Installing packages... This may take a few minutes.');
   console.log();
 
   isOnline()
