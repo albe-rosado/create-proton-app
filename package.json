@@ -26,6 +26,7 @@
     "url": "https://github.com/albe-rosado/create-proton-app"
   },
   "dependencies": {
-    "commander": "^2.14.1"
+    "commander": "^2.14.1",
+    "ncp": "^2.0.0"
   }
 }

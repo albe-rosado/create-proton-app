@@ -2,6 +2,7 @@ const commander = require('commander');
 const path = require('path');
 const fs = require('fs');
 const os = require('os');
+const ncp = require('ncp').ncp;
 const { exec } = require('child_process');
 
 const pkgJson = require('../package.json');
@@ -41,7 +42,8 @@ const createApp = function(projectDir) {
     private: true,
     scripts: {
       "start": "node_modules/.bin/babel-node index.js",
-      "build": "node_modules/.bin/babel index.js -d bin/"
+      "build": "node_modules/.bin/babel index.js -d bin/",
+      "package-linux": "bash ./scripts/appimage.sh"
     }
   };
 
@@ -56,9 +58,12 @@ const createApp = function(projectDir) {
   process.chdir(rootPath);
   // copy template files
   const templatePath = path.join(__dirname, '..', 'template');
-
-  fs.copyFileSync(path.join(templatePath, 'index.js'), path.join(process.cwd(), 'index.js'));
-  fs.copyFileSync(path.join(templatePath, '.babelrc'), path.join(process.cwd(), '.babelrc'));
+  ncp(templatePath, process.cwd(), (error) => {
+    if(error){
+      printErrorMessage(error);
+      process.exit(1);
+    }
+  });
 
   console.log('Installing packages... This may take a few minutes.');
   console.log();
