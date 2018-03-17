@@ -58,15 +58,15 @@ mkdir -p dist/linux/
 
 # check for npx , if doesn't exist use npm global instead
 if type npx >/dev/null 2>&1;then
-	npx pkg ./bin/index.js --targets linux-x86,linux-x64 --output ./dist/linux/$APP;
+	npx pkg ./bin/index.js --targets linux-x64 --output ./dist/linux/$APP;
 else
 	echo >&2 "You don't have  'npx'  installed, you should, is pretty useful. Get it at https://github.com/zkat/npx."; 
 	echo >&2 "Installing required dependency globally then...";
-	npm install -g pkg
+	npm install -g pkg;
 	pkg ./bin/index.js --targets linux --output ./dist/linux/$APP;	
 fi
 
-mkdir -p dist/linux/$APP.AppDir/usr/{lib,bin};
+mkdir -p dist/linux/$APP.AppDir/usr/bin;
 
 cd dist/linux/$APP.AppDir;
 
@@ -88,7 +88,7 @@ chmod a+x AppRun;
 if [[ -z ${ICON_PATH-x} ]];then
 	cp ../$ICON_PATH ./$APP.${ICON_PATH##*.};
 else
-	wget "https://raw.githubusercontent.com/kusti8/proton-native/master/docs/images/icon_black.svg" -O $APP.svg;
+	wget "https://github.com/albe-rosado/create-proton-app/raw/master/src/img/icon.png" -O $APP.png;
 fi
 
 # make desktop file

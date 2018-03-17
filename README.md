@@ -29,13 +29,24 @@ Inside that directory, it will generate the initial project structure and instal
 ```
 my-app
 ├── node_modules
+├── scripts
+|	└── appimage.sh
 ├── package.json
 ├── index.js
 └── .babelrc
 ```
 
+## Packaging
 
+Right now you can package your application into a [appImage](https://appimage.org/), pretty straight forward:
 
+```sh
+# build your app
+npm run build
+# bundle it into an appImage
+npm run package-linux
+```
+There maybe be some issues with showing icons in some distros like KDE Neon, etc... In addition only 64-bit binaries can be produced. There is work in progress to tackle these issues.
 
 ## Contributing
 
