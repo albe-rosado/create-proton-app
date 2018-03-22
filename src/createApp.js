@@ -90,7 +90,7 @@ const createApp = function(projectDir) {
 
 const installDeps = (verbose) => {
   // dependencies to install
-  const dependencies = ['proton-native'];
+  const dependencies = ['proton-native', 'babel-cli', 'babel-preset-env', 'babel-preset-stage-0', 'babel-preset-react'];
   // Install dependecies
   const command = `npm${runningOnWindows ? '.cmd' : ''}`; // Supporting only npm initially, yarn will come in the future(maybe)	
   const args = ['install', '--save', '--loglevel', 'error', ...dependencies];
