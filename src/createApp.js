@@ -47,7 +47,10 @@ const createApp = function(projectDir) {
       "dist": "electron-builder"
     },
     build: {
-        "protonNodeVersion": "current"
+        "protonNodeVersion": "current",
+        "mac": {
+          "identity": null
+        }
     }
   };
 
