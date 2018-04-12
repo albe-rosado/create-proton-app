@@ -56,5 +56,6 @@ typings/
 
 # dotenv environment variables file
 .env
-
-.vscode
+# IDE config folders
+.vscode/
+.idea/
