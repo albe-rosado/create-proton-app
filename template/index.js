@@ -7,7 +7,7 @@ class Example extends Component {
     return (
       <App> // you must always include App around everything
         <Window title="Proton Native Rocks!" size={{w: 300, h: 300}} menuBar={false}>
-            // all your other components go here
+            {/* all your other components go here*/}
         </Window>
       </App>
     );
