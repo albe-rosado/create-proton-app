@@ -109,6 +109,12 @@ const installDeps = (verbose) => {
 
   return new Promise((resolve, reject) => {
     const childProc = exec(`${command} ${args.join(' ')}`);
+    childProc.stdout.on('data', (chunk) => {
+      console.log(chunk);
+    });
+    childProc.stderr.on('data', (chunk) => {
+      console.error(chunk);
+    });
     childProc.on('close', (code) => {
       if (code !== 0) {
         reject({
@@ -134,6 +140,12 @@ const installDevDeps = (verbose) => {
 
     return new Promise((resolve, reject) => {
         const childProc = exec(`${command} ${args.join(' ')}`);
+        childProc.stdout.on('data', (chunk) => {
+          console.log(chunk);
+        });
+        childProc.stderr.on('data', (chunk) => {
+          console.error(chunk);
+        });
         childProc.on('close', (code) => {
             if (code !== 0) {
                 reject({
