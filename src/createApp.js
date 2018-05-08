@@ -36,6 +36,7 @@ const createApp = function(projectDir) {
   console.log();
 
   //creates package.json file on the new project dir
+  // get latest stable dep releases,
   const json = {
     name: projectName,
     version: '0.0.1',
@@ -45,6 +46,16 @@ const createApp = function(projectDir) {
       "build": "node_modules/.bin/babel index.js -d bin/",
       "pack": "electron-builder --dir",
       "dist": "electron-builder"
+    },
+    dependencies: {
+      "proton-native": "latest"
+     },
+    devDependencies: {
+        "electron-builder": "latest",
+        "babel-cli": "latest",
+        "babel-preset-env": "latest",
+        "babel-preset-stage-0": "latest",
+        "babel-preset-react": "latest"
     },
     build: {
         "protonNodeVersion": "current",
@@ -72,8 +83,7 @@ const createApp = function(projectDir) {
     }
   });
 
-  console.log('Installing packages... This may take a few minutes.');
-  console.log();
+  console.log('Installing packages... This may take a few minutes. \n');
 
   isOnline()
   .then((online) => {
@@ -83,8 +93,6 @@ const createApp = function(projectDir) {
       return installDeps(app.verbose);
     }
   }).then(() => {
-      return installDevDeps(app.verbose);
-  }).then(() => {
     process.chdir('..');
     printSuccessMessage(rootPath, projectName);
     process.exit(1);
@@ -92,17 +100,14 @@ const createApp = function(projectDir) {
   .catch((error) => {
     //print error message
     printErrorMessage(error.message);
-    throw new Error(error);
     process.exit(1);
   });
 };
 
 const installDeps = (verbose) => {
-  // dependencies to install
-  const dependencies = ['proton-native'];
   // Install dependecies
   const command = `npm${runningOnWindows ? '.cmd' : ''}`; // Supporting only npm initially, yarn will come in the future(maybe)	
-  const args = ['install', '--save', '--loglevel', 'error', ...dependencies];
+  const args = ['install'];
   if (verbose) {
     args.push('--verbose');
   }
@@ -128,36 +133,6 @@ const installDeps = (verbose) => {
   });
 };
 
-const installDevDeps = (verbose) => {
-    // dependencies to install
-    const dependencies = ['electron-builder', 'babel-cli', 'babel-preset-env', 'babel-preset-stage-0', 'babel-preset-react'];
-    // Install dependecies
-    const command = `npm${runningOnWindows ? '.cmd' : ''}`; // Supporting only npm initially, yarn will come in the future(maybe)
-    const args = ['install', '--save-dev', '--loglevel', 'error', ...dependencies];
-    if (verbose) {
-        args.push('--verbose');
-    }
-
-    return new Promise((resolve, reject) => {
-        const childProc = exec(`${command} ${args.join(' ')}`);
-        childProc.stdout.on('data', (chunk) => {
-          console.log(chunk);
-        });
-        childProc.stderr.on('data', (chunk) => {
-          console.error(chunk);
-        });
-        childProc.on('close', (code) => {
-            if (code !== 0) {
-                reject({
-                    message: `${command} ${args.join(' ')} has failed.`,
-                });
-            }
-            else {
-                resolve();
-            }
-        });
-    });
-};
 
 const printSuccessMessage = (rootPath, projectName) => {
   console.log();
