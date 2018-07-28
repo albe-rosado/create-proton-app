@@ -115,10 +115,10 @@ const installDeps = (verbose) => {
   return new Promise((resolve, reject) => {
     const childProc = exec(`${command} ${args.join(' ')}`);
     childProc.stdout.on('data', (chunk) => {
-      console.log(chunk);
+      process.stdout.write(chunk);
     });
     childProc.stderr.on('data', (chunk) => {
-      console.error(chunk);
+      process.stderr.write(chunk);
     });
     childProc.on('close', (code) => {
       if (code !== 0) {
