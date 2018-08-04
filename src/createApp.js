@@ -44,6 +44,7 @@ const createApp = function(projectDir) {
     scripts: {
       "start": "node_modules/.bin/babel-node index.js",
       "build": "node_modules/.bin/babel index.js -d bin/",
+      "dev": "proton-hot-cli index.js",
       "pack": "electron-builder --dir",
       "dist": "electron-builder"
     },
@@ -52,6 +53,7 @@ const createApp = function(projectDir) {
      },
     devDependencies: {
         "electron-builder": "latest",
+        "proton-hot-cli": "latest",
         "babel-cli": "latest",
         "babel-preset-env": "latest",
         "babel-preset-stage-0": "latest",
