@@ -28,7 +28,6 @@ cd my-app
 npm run start
 ```
 
-
 It will create a directory called `my-app` inside the current folder.<br>
 Inside that directory, it will generate the initial project structure and install Proton Native dependencies:
 
@@ -38,6 +37,15 @@ my-app
 ├── package.json
 ├── index.js
 └── .babelrc
+```
+
+## Running
+
+```sh
+# run your app
+npm run start
+# run your app with hot-reloading
+npm run dev
 ```
 
 ## Packaging

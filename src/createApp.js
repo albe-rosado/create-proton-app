@@ -147,11 +147,17 @@ const printSuccessMessage = (rootPath, projectName) => {
   console.log(ansiColors.green, 'npm run start');
   console.log(ansiColors.reset, 'Will run your application.');
   console.log();
-  console.log(ansiColors.green, 'npm run build');
-  console.log(ansiColors.reset, 'Bundles and transpiles your source files.');
+  console.log(ansiColors.green, 'npm run dev');
+  console.log(ansiColors.reset, 'Will run your application with hot-reloading.');
   console.log();
-  console.log('Go to your project folder and run your application typing:')
-  console.log(ansiColors.green, 'cd', ansiColors.reset,`${projectName}`);
+  console.log(ansiColors.green, 'npm run build');
+  console.log(ansiColors.reset, 'Transpiles and bundles your source files.');
+  console.log();
+  console.log(ansiColors.green, 'npm run dist');
+  console.log(ansiColors.reset, 'Creates an archive containing the bundle.');
+  console.log();
+  console.log('Go to your project folder and run your application by typing:')
+  console.log(ansiColors.green, 'cd ' + ansiColors.reset + `${projectName}`);
   console.log(ansiColors.green,'npm run start');
   console.log(ansiColors.reset);
   console.log();
