@@ -4,12 +4,14 @@ const fs = require('fs');
 const os = require('os');
 const ncp = require('ncp').ncp;
 const { exec } = require('child_process');
+const chalk = require('chalk');
 
 const pkgJson = require('../package.json');
 const {isOnline, ansiColors} = require('./utils');
 const runningOnWindows = os.platform() === 'win32';
 
 let projectDir;
+const args = process.argv.slice(2);
 
 const app = new commander.Command(pkgJson.name)
   .version(pkgJson.version)
@@ -17,6 +19,18 @@ const app = new commander.Command(pkgJson.name)
   .usage('<project-name> [options]')
   .action(dirName => {
     projectDir = dirName;
+    if (args.length > 1) {
+      console.log(
+        chalk.yellow(
+          `\n You have provided more that one argument for <project-directory>.`
+        )
+	  );
+
+      console.log(
+        `\n Run ${chalk.cyan(`create-proton-app --help`)} to see all options.`
+      );
+      process.exit(1);
+    }
   })
   .on('--help', () => {
     console.log('Example:');
