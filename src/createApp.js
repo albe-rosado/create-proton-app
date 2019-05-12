@@ -11,7 +11,6 @@ const {isOnline, ansiColors} = require('./utils');
 const runningOnWindows = os.platform() === 'win32';
 
 let projectDir;
-const args = process.argv.slice(2);
 
 const app = new commander.Command(pkgJson.name)
   .version(pkgJson.version)
@@ -19,16 +18,10 @@ const app = new commander.Command(pkgJson.name)
   .usage('<project-name> [options]')
   .action(dirName => {
     projectDir = dirName;
+    const args = process.argv.slice(2).filter(item => !item.includes('-'));
     if (args.length > 1) {
-      console.log(
-        chalk.yellow(
-          `\n You have provided more that one argument for <project-directory>.`
-        )
-	  );
-
-      console.log(
-        `\n Run ${chalk.cyan(`create-proton-app --help`)} to see all options.`
-      );
+      console.log(ansiColors.yellow, `\n You have provided more that one argument for <project-directory>.`);
+      console.log(`\n Run`, ansiColors.cyan, 'create-proton-app --help', 'to see all available options.');
       process.exit(1);
     }
   })
@@ -45,7 +38,7 @@ const app = new commander.Command(pkgJson.name)
 const createApp = function(projectDir) {
   const rootPath = path.resolve(projectDir);
   const projectName = path.basename(rootPath);
-  
+
   console.log(`Creating a new Proton Native app on ${rootPath}`);
   console.log();
 
@@ -85,8 +78,8 @@ const createApp = function(projectDir) {
   } else {
     fs.mkdirSync(rootPath);
     fs.writeFileSync(path.join(rootPath, 'package.json'), JSON.stringify(json, null, 2) + os.EOL);
-  }	
-  
+  }
+
   process.chdir(rootPath);
   // copy template files
   const templatePath = path.join(__dirname, '..', 'template');
@@ -120,7 +113,7 @@ const createApp = function(projectDir) {
 
 const installDeps = (verbose) => {
   // Install dependecies
-  const command = `npm${runningOnWindows ? '.cmd' : ''}`; // Supporting only npm initially, yarn will come in the future(maybe)	
+  const command = `npm${runningOnWindows ? '.cmd' : ''}`; // Supporting only npm initially, yarn will come in the future(maybe)
   const args = ['install'];
   if (verbose) {
     args.push('--verbose');
