@@ -4,7 +4,6 @@ const fs = require('fs');
 const os = require('os');
 const ncp = require('ncp').ncp;
 const { exec } = require('child_process');
-const chalk = require('chalk');
 
 const pkgJson = require('../package.json');
 const {isOnline, ansiColors} = require('./utils');
