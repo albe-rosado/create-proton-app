@@ -1,7 +1,7 @@
 
 # Create Proton Native App
 
-Create [Proton Native](https://proton-native.js.org/#/) apps with no build configuration. Works on Linux, MacOS and Windows. 
+Create [Proton Native](https://proton-native.js.org/#/) apps with no build configuration. Works on Linux, macOS and Windows.
 
 ## Requirements
 
@@ -16,7 +16,6 @@ Install these libraries:
 - build-essential
 
 
-
 ## Usage
 
 ```sh
@@ -24,15 +23,10 @@ Install these libraries:
 npm install -g create-proton-app
 # create your proton native app
 create-proton-app my-app
-# got to your project directory and have fun!
+# go to your project directory and have fun!
 cd my-app
 npm run start
 ```
-
-
-
-
-
 
 It will create a directory called `my-app` inside the current folder.<br>
 Inside that directory, it will generate the initial project structure and install Proton Native dependencies:
@@ -45,9 +39,18 @@ my-app
 └── .babelrc
 ```
 
+## Running
+
+```sh
+# run your app
+npm run start
+# run your app with hot-reloading
+npm run dev
+```
+
 ## Packaging
 
-We use `electron-builder` to handle the packaging for your application. Produces bundles for Linux(appImages, snaps, deb, rpm, ...) and MacOs. Windows support is unstable.
+We use `electron-builder` to handle the packaging for your application. Produces bundles for Linux (AppImages, Snaps, deb, rpm, ...) and macOS. Windows support is unstable.
 
 
 ```sh
@@ -56,7 +59,7 @@ npm run build
 # bundle it
 npm run dist
 ```
-Only a minimal build/packaging config is provided, as your application grows you should take a look to the  [documentation](https://www.electron.build/).
+Only a minimal build/packaging config is provided, as your application grows you should take a look at the [documentation](https://www.electron.build/).
 
 ## Contributing
 
