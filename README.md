@@ -5,17 +5,31 @@ Create [Proton Native](https://proton-native.js.org/#/) apps with no build confi
 
 ## Requirements
 
+Tested with Node.js v10 (LTS).
+
 ### Windows:
+
 ```
 npm install --global --production windows-build-tools
 ```
 
 ### Linux:
-Install these libraries:
-- libgtk-3-dev
-- build-essential
 
+Install these packages.
 
+#### Debian Based (.deb)
+
+```
+libgtk-3-dev build-essential python2-dev
+```
+
+*Specifically `g++ make dpkg-dev` from `build-essential`.*
+
+#### Red Hat Based (.rpm)
+
+```
+gtk3-devel gcc-c++ make rpm-build python2-devel
+```
 
 ## Usage
 
