@@ -60,7 +60,6 @@ const createApp = function(projectDir) {
         "electron-builder": "latest",
         "babel-cli": "latest",
         "babel-preset-env": "latest",
-        "babel-preset-stage-0": "latest",
         "babel-preset-react": "latest"
     },
     build: {
