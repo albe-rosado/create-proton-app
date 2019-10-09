@@ -64,7 +64,8 @@ const createApp = function(projectDir) {
         "babel-preset-react": "latest"
     },
     build: {
-        "protonNodeVersion": "current",
+        "electronVersion": "current",
+        "framework": "proton-native",
         "mac": {
           "identity": null
         }
