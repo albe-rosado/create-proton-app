@@ -1,4 +1,7 @@
 
+🚨This project is not being maintained anymore.🚨
+
+
 # Create Proton Native App
 
 Create [Proton Native](https://proton-native.js.org/#/) apps with no build configuration. Works on Linux, MacOS and Windows. 
