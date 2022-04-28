@@ -49,7 +49,7 @@ const createApp = function(projectDir) {
     private: true,
     scripts: {
       "start": "node_modules/.bin/babel-node index.js",
-      "build": "node_modules/.bin/babel index.js -d bin/",
+      "build": "node_modules/.bin/babel index.js --inspect bin/",
       "pack": "electron-builder --dir",
       "dist": "electron-builder"
     },
@@ -58,10 +58,11 @@ const createApp = function(projectDir) {
      },
     devDependencies: {
         "electron-builder": "latest",
-        "babel-cli": "latest",
-        "babel-preset-env": "latest",
-        "babel-preset-stage-0": "latest",
-        "babel-preset-react": "latest"
+        "@babel/cli": "latest",
+        "@babel/core": "latest",
+        "@babel/node": "latest",
+        "@babel/preset-env": "latest",
+        "@babel/preset-react": "latest"
     },
     build: {
         "protonNodeVersion": "current",
