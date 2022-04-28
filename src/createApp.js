@@ -44,30 +44,32 @@ const createApp = function(projectDir) {
   //creates package.json file on the new project dir
   // get latest stable dep releases,
   const json = {
-    name: projectName,
-    version: '0.0.1',
-    private: true,
-    scripts: {
-      "start": "node_modules/.bin/babel-node index.js",
-      "build": "node_modules/.bin/babel index.js -d bin/",
+    "name": "app",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+      "start": "babel-watch index.js",
+      "build": "babel index.js -d bin/",
       "pack": "electron-builder --dir",
       "dist": "electron-builder"
     },
-    dependencies: {
-      "proton-native": "latest"
-     },
-    devDependencies: {
-        "electron-builder": "latest",
-        "babel-cli": "latest",
-        "babel-preset-env": "latest",
-        "babel-preset-stage-0": "latest",
-        "babel-preset-react": "latest"
+    "dependencies": {
+      "proton-native": "latest",
+      "react": "^16.8.6"
     },
-    build: {
-        "protonNodeVersion": "current",
-        "mac": {
-          "identity": null
-        }
+    "devDependencies": {
+      "@babel/cli": "^7.4.4",
+      "@babel/core": "^7.4.4",
+      "@babel/preset-env": "^7.4.4",
+      "@babel/preset-react": "^7.0.0",
+      "babel-watch": "^7.0.0",
+      "electron-builder": "latest"
+    },
+    "build": {
+      "protonNodeVersion": "current",
+      "mac": {
+        "identity": null
+      }
     }
   };
 
